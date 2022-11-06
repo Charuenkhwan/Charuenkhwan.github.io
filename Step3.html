@@ -24,7 +24,7 @@
       alert('loveu!');
     }
     
-    function onResultsPose(results) {
+    function onResultsFace(results) {
       const canvas = document.getElementById('canvas');
       const canvasCtx = canvas.getContext('2d');
       canvasCtx.save();
@@ -42,10 +42,10 @@
     // Prefer camera resolution nearest to 640x480.
     function startup() {
       // MediaPipe code
-      const face = new face({locateFile: (file) => {
-        return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection/${file}`;
+      const pose = new pose({locateFile: (file) => {
+        return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
       }});
-      face_detection.setOptions({
+      pose.setOptions({
         modelComplexity: 1,
         smoothLandmarks: true,
         enableSegmentation: true,
@@ -53,7 +53,7 @@
         minDetectionConfidence: 0.5,
         minTrackingConfidence: 0.5
       });
-      face.onResults(onResultsFace);
+      pose.onResults(onResultsPose);
       
       // Camera code
       const video = document.getElementById('video');
