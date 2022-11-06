@@ -5,10 +5,10 @@
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/face_detection.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="camera">
@@ -21,7 +21,7 @@
   <a href="https://google.github.io/mediapipe/solutions/pose.html">คู่มือ MediaPipe</a>
   <script>
     function popup() {
-      alert('นอนนvo!');
+      alert('loveu!');
     }
     
     function onResultsPose(results) {
@@ -42,10 +42,10 @@
     // Prefer camera resolution nearest to 640x480.
     function startup() {
       // MediaPipe code
-      const pose = new Pose({locateFile: (file) => {
-        return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+      const face = new face({locateFile: (file) => {
+        return `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection/${file}`;
       }});
-      pose.setOptions({
+      face_detection.setOptions({
         modelComplexity: 1,
         smoothLandmarks: true,
         enableSegmentation: true,
@@ -53,7 +53,7 @@
         minDetectionConfidence: 0.5,
         minTrackingConfidence: 0.5
       });
-      pose.onResults(onResultsPose);
+      face.onResults(onResultsFace);
       
       // Camera code
       const video = document.getElementById('video');
