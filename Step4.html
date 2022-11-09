@@ -42,7 +42,7 @@
     // Prefer camera resolution nearest to 640x480.
     function startup() {
       // MediaPipe code
-      const pose = new pose({locateFile: (file) => {
+      const pose = new Pose({locateFile: (file) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
       }});
         pose.setOptions({
