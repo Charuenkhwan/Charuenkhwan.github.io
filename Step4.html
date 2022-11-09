@@ -21,7 +21,7 @@
   <a href="https://google.github.io/mediapipe/solutions/pose.html">คู่มือ MediaPipe</a>
   <script>
     function popup() {
-      alert('Hello Mom!');
+      alert('Hello World!');
     }
     
     function onResultsPose(results) {
@@ -35,7 +35,6 @@
           drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS, {color: '#00FF00', lineWidth: 4});
           drawLandmarks(canvasCtx, results.poseLandmarks, {color: '#FF0000', lineWidth: 2,});
           console.log(results.poseLandmarks);
-        }
       }
       canvasCtx.restore();   
     }
