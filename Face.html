@@ -1,66 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Page Title</title>
-    <meta charset="utf-8">
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/face_detection.js" crossorigin="anonymous"></script>
-    <style>
-        H4 { text-align: right}
-        .box-container {
-            display: flex;
-            flex-direction: row;
-        }
-        .img-container {
-            display: flex;
-            flex-direction: column;
-        }
-        .control-container {
-            display: flex;
-            flex-direction: column;
-        }
-        .landmark-container {
-            display: flex;
-            flex-direction: row;
-        }
-        .button-style {
-            display: block;
-            width: 100%;
-        }
-    </style>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.css" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="demo.css" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.1/face_mesh.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div class="box-container">
-        <div class="img-container">
-            <canvas id="output_canvas" width="640" height="480"></canvas>
-            <video id="input_video" width="640" height="480"></video>
-        </div>
-        <div class="control-container">
-            <div>
-                <input type="button" class="button-style" id="record-button" value="Record" onclick="startRecording()">                
-            </div>
-            <div>
-                <label for="rec-period">Period (secs)</label>
-                <input type="range" min="10" max="600" value="60" class="slider" id="rec-period">
-            </div>
-            <div class="landmark-container">
-                <div>
-                    <h4>X</h4>
-                    <ol id="landmark-xlist">
-                    </ol>
-                </div>
-                <div>
-                    <h4>Y</h4>
-                    <ol id="landmark-ylist">
-                    </ol>
-                </div> 
-            </div>                
-        </div>
+
+  <!-- BULMA NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="https://camo.githubusercontent.com/82f2bfa2005e2755362d419da02d788b366506b0d55212c160abd5100f3a8822/68747470733a2f2f312e62702e626c6f6773706f742e636f6d2f2d7753746b30565a44664d6b2f59434330474952507244492f41414141414141414147632f31796a37494f556564766f654f3143754378713745544c57304671586e69366d77434c63424741735948512f733332302f6c6f676f746578742e706e67" >
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-    <script>
-        const video2 = document.getElementsByClassName('input_video2')[0];
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="face.html">
+          Face
+        </a>
+  
+        <a class="navbar-item" href="faceMesh.html">
+          Face Mesh
+        </a>
+
+        <a class="navbar-item" href="hands.html">
+          Hands
+        </a>
+        
+        <a class="navbar-item" href="pose.html">
+          Pose
+        </a>
+
+        <a class="navbar-item" href="holistic.html">
+          Holistic
+        </a>
+        </div>
+      </div>
+  
+    </div>
+  </nav>
+
+  <!-- CONTENTS -->
+  <div class="container" style="margin-top: 20px;">
+
+    <div class="columns">
+      
+      <!-- WEBCAM INPUT -->
+      <div class="column">
+        <article class="panel is-info">
+          <p class="panel-heading">
+            Webcam Input
+          </p>
+          <div class="panel-block">
+            <video class="input_video2"></video>
+          </div>
+        </article>
+      </div>
+
+      <!-- MEDIAPIPE OUTPUT -->
+      <div class="column">
+        <article class="panel is-info">
+          <p class="panel-heading">
+            Mediapipe Face Mesh
+          </p>
+          <div class="panel-block">
+            <canvas class="output2" width="480px" height="480px"></canvas>
+          </div>
+        </article>
+      </div>
+    </div>
+    
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+  <div style="visibility: hidden;" class="control2">
+  </div>
+
+  <script>
+      const video2 = document.getElementsByClassName('input_video2')[0];
 const out2 = document.getElementsByClassName('output2')[0];
 const controlsElement2 = document.getElementsByClassName('control2')[0];
 const canvasCtx = out2.getContext('2d');
@@ -154,6 +186,6 @@ new ControlPanel(controlsElement2, {
       video2.classList.toggle('selfie', options.selfieMode);
       faceMesh.setOptions(options);
     });
-    </script>
+  </script>
 </body>
 </html>
