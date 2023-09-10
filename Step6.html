@@ -15,7 +15,35 @@
 </head>
 
 <body>
+<!-- CONTENTS -->
+  <div class="container" style="margin-top: 20px;">
 
+    <div class="columns">
+      
+      <!-- WEBCAM INPUT -->
+      <div class="column">
+        <article class="panel is-info">
+          <p class="panel-heading">
+             Input
+          </p>
+          <div class="panel-block">
+            <video class="input_video2"></video>
+          </div>
+        </article>
+      </div>
+
+      <!-- MEDIAPIPE OUTPUT -->
+      <div class="column">
+        <article class="panel is-info">
+          <p class="panel-heading">
+            Output Face Mesh
+          </p>
+          <div class="panel-block">
+            <canvas class="output2" width="480px" height="480px"></canvas>
+          </div>
+        </article>
+      </div>
+    </div>
   <ons-button onclick="popup()">Click Me</ons-button>
   <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">การใช้กล้อง</a>
   <a href="https://lintangwisesa.github.io/MediaPipe-in-JavaScript/pose.html">ตัวอย่าง MediaPipe</a>
