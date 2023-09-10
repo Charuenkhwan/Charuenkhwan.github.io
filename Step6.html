@@ -79,6 +79,7 @@
         onFrame: async () => {
           await faceMesh.send({image: video});
         },
+        facingMode: 'environment',
         width: 640,
         height: 480
       });
