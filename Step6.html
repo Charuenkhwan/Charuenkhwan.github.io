@@ -184,6 +184,11 @@ new ControlPanel(controlsElement2, {
       video2.classList.toggle('selfie', options.selfieMode);
       faceMesh.setOptions(options);
     });
+         camera.start();
+    }
+   
+    // start
+    window.addEventListener("load", startup, false);
   </script>
 </body>
 </html>
