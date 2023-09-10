@@ -60,7 +60,7 @@
     // Prefer camera resolution nearest to 640x480.
     function startup() {
       // MediaPipe code
-      const faceMesh = new faceMesh({locateFile: (file) => {
+      const faceMesh = new FaceMesh({locateFile: (file) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
       }});
        faceMesh.setOptions({
