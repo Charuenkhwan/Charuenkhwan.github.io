@@ -9,16 +9,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/face_detection.js" crossorigin="anonymous"></script>
-  </head>
 <body>
   <div class="camera">
-     <canvas id="canvas" width=640 height=480></canvas>
+    <canvas id="canvas" width=640 height=480></canvas>
     <video id="video">Video stream not available.</video>
   </div>
   <ons-button onclick="popup()">Click Me</ons-button>
   <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">การใช้กล้อง</a>
-  <a href="https://lintangwisesa.github.io/MediaPipe-in-JavaScript/face.html">ตัวอย่าง MediaPipe</a>
-  <a href="https://google.github.io/mediapipe/solutions/face.html">คู่มือ MediaPipe</a>
+  <a href="https://lintangwisesa.github.io/MediaPipe-in-JavaScript/pose.html">ตัวอย่าง MediaPipe</a>
+  <a href="https://google.github.io/mediapipe/solutions/pose.html">คู่มือ MediaPipe</a>
   <script>
     function popup() {
       alert('Hello World!');
@@ -59,7 +58,7 @@
         onFrame: async () => {
           await faceDetection.send({image: video});
         },
-        facingMode: 'environment'
+        facingMode: 'environment',
         width: 640,
         height: 480
       });
@@ -71,4 +70,3 @@
   </script>
 </body>
 </html>
-
