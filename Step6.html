@@ -39,7 +39,7 @@
             Mediapipe Face Mesh
           </p>
           <div class="panel-block">
-            <canvas class="output2" width="720px" height="480px"></canvas>
+            <canvas class="output2" width="640px" height="480px"></canvas>
           </div>
         </article>
       </div>
@@ -116,7 +116,7 @@ const camera = new Camera(video2, {
   onFrame: async () => {
     await faceMesh.send({image: video2});
   },
-  width: 720,
+  width: 640,
   height: 480
 });
 camera.start();
